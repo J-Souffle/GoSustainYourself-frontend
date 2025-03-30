@@ -4,6 +4,7 @@ import { ChartAreaInteractive } from "../components/chart-area-interactive"
 import { SectionCards } from "../components/section-cards"
 import { SiteHeader } from "../components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import RecycleCenterMap from "../components/RecycleCenterMap";
 
 import data from "./data.json"
 
@@ -20,11 +21,19 @@ export default function Page() {
               <div className="px-4 lg:px-6">
                 <ChartAreaInteractive />
               </div>
-              {/* <DataTable data={data} /> */}
+              {/* <div className="flex flex-wrap px-4 lg:px-6 gap-4">
+                <div className="flex-1">
+                  <h1>Find Recycling Centers Near You</h1>
+                </div>
+                <div className="flex-1">
+                  <RecycleCenterMap />
+                </div>
+              </div> */}
             </div>
           </div>
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }
+
