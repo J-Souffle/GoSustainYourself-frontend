@@ -79,25 +79,27 @@ export function SectionCards() {
         </CardFooter>
       </Card>
       <Card className="@container/card">
-        <CardHeader className="relative">
-          <CardDescription>Glass Recycling</CardDescription>
-          <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-            100% Recyclable
-          </CardTitle>
-          <div className="absolute right-4 top-4">
-            <Badge variant="outline" className="flex gap-1 rounded-lg text-xs">
-              <TrendingUpIcon className="size-3" />
-              +100%
-            </Badge>
-          </div>
-        </CardHeader>
-        <CardFooter className="flex-col items-start gap-1 text-sm">
-          <div className="line-clamp-1 flex gap-2 font-medium">
-            Can be recycled endlessly <TrendingUpIcon className="size-4" />
-          </div>
-          <div className="text-muted-foreground">No quality loss in recycling</div>
-        </CardFooter>
-      </Card>
+  <CardHeader className="relative">
+    <CardDescription>Paper Recycling</CardDescription>
+    <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
+      68% Recycled in U.S.
+    </CardTitle>
+    <div className="absolute right-4 top-4">
+      <Badge variant="outline" className="flex gap-1 rounded-lg text-xs">
+        <TrendingUpIcon className="size-3" />
+        +68%
+      </Badge>
+    </div>
+  </CardHeader>
+  <CardFooter className="flex-col items-start gap-1 text-sm">
+    <div className="line-clamp-1 flex gap-2 font-medium">
+      Saves trees and water <TrendingUpIcon className="size-4" />
+    </div>
+    <div className="text-muted-foreground">
+      Recycling 1 ton saves 17 trees and 7,000 gallons of water
+    </div>
+  </CardFooter>
+</Card>
     </div>
   )
 }
