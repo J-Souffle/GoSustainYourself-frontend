@@ -124,14 +124,14 @@ const chartData = [
 
 const chartConfig = {
   visitors: {
-    label: "Visitors",
+    label: "Composting",
   },
   desktop: {
-    label: "Desktop",
+    label: "Municipal Recycling Programs",
     color: "hsl(var(--chart-1))",
   },
   mobile: {
-    label: "Mobile",
+    label: "Industrial Recycling",
     color: "hsl(var(--chart-2))",
   },
 } satisfies ChartConfig
@@ -163,7 +163,7 @@ export function ChartAreaInteractive() {
   return (
     <Card className="@container/card">
       <CardHeader className="relative">
-        <CardTitle>Total Visitors</CardTitle>
+        <CardTitle>Total Weight of Recycled Goods (in Millions of Pounds) in the US 2024</CardTitle>
         <CardDescription>
           <span className="@[540px]/card:block hidden">
             Total for the last 3 months
@@ -294,15 +294,15 @@ export function ChartAreaInteractive() {
             <Area
               dataKey="mobile"
               type="natural"
-              fill="url(#fillMobile)"
-              stroke="var(--color-mobile)"
+              fill="#38a169"
+              stroke="#2f855a"
               stackId="a"
             />
             <Area
               dataKey="desktop"
               type="natural"
-              fill="url(#fillDesktop)"
-              stroke="var(--color-desktop)"
+              fill="#FFD700"
+              stroke="#276749"
               stackId="a"
             />
           </AreaChart>

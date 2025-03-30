@@ -8,19 +8,20 @@ function App() {
   return (
     <div>
   <DashboardPage />
-  <div className="flex flex-col w-screen px-4 gap-4">
-    <div className="w-full">
-      <h1 className="text-center text-xl font-bold"
+  <div className="flex flex-wrap px-4 lg:px-6 gap-4">
+  <div className="flex-1">
+  <h1 className="text-center text-xl font-bold"
         style={{
           color: "rgba(0, 180, 0, 0.5)", // Custom green color
           fontWeight: "bold", // Makes the text bold
         }}
-      >Find Recycling Places Near You</h1>
-    </div>
-    <div className="w-full">
-      <RecycleCenterMap />
-    </div>
+      >Find Recycling Centers Near You</h1>
   </div>
+  <div className="w-full">
+    <RecycleCenterMap className="w-full" />
+  </div>
+</div>
+
 </div>
 
   );
