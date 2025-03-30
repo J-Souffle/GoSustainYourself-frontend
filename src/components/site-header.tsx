@@ -10,7 +10,17 @@ export function SiteHeader() {
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
-  <h1 className="text-green-300 text-base font-medium">Dashboard</h1>
+<h1
+  className="text-base"
+  style={{
+    color: "rgba(0, 180, 0, 0.5)", // Custom green color
+    fontWeight: "bold", // Makes the text bold
+  }}
+>
+  Dashboard
+</h1>
+
+
       </div>
     </header>
   )

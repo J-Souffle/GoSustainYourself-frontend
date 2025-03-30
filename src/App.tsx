@@ -10,7 +10,12 @@ function App() {
   <DashboardPage />
   <div className="flex flex-col w-screen px-4 gap-4">
     <div className="w-full">
-      <h1 className="text-center text-xl font-bold">Find Recycling Places Near You</h1>
+      <h1 className="text-center text-xl font-bold"
+        style={{
+          color: "rgba(0, 180, 0, 0.5)", // Custom green color
+          fontWeight: "bold", // Makes the text bold
+        }}
+      >Find Recycling Places Near You</h1>
     </div>
     <div className="w-full">
       <RecycleCenterMap />

@@ -260,20 +260,24 @@ function SidebarTrigger({
 
   return (
     <Button
-      data-sidebar="trigger"
-      data-slot="sidebar-trigger"
-      variant="ghost"
-      size="icon"
-      className={cn("size-7", className)}
-      onClick={(event) => {
-        onClick?.(event)
-        toggleSidebar()
-      }}
-      {...props}
-    >
-      <PanelLeftIcon />
-      <span className="sr-only">Toggle Sidebar</span>
-    </Button>
+  data-sidebar="trigger"
+  data-slot="sidebar-trigger"
+  variant="ghost"
+  size="icon"
+  style={{
+    backgroundColor: "rgba(0, 180, 0, 0.5)", // Green with 50% opacity
+  }}
+  className={cn("size-7", className)}
+  onClick={(event) => {
+    onClick?.(event)
+    toggleSidebar()
+  }}
+  {...props}
+>
+  <PanelLeftIcon />
+  <span className="sr-only">Toggle Sidebar</span>
+</Button>
+
   )
 }
 

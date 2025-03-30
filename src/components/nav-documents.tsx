@@ -61,9 +61,6 @@ export function NavDocuments({
               </DropdownMenuTrigger>
               <DropdownMenuContent
   className="w-24 rounded-lg"
-  style={{
-    backgroundColor: "rgba(0, 180, 0, 0.5)", // Green with 50% opacity
-  }}
   side={isMobile ? "bottom" : "right"}
   align={isMobile ? "end" : "start"}
 >
