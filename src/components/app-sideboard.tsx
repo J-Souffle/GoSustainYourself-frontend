@@ -3,7 +3,6 @@ import * as React from "react"
 import Img1 from '../assets/natural-leaf-dark.png'
 import Img2 from '../assets/pfp.jpg'
 import {
-  ArrowUpCircleIcon,
   BarChartIcon,
   CameraIcon,
   ClipboardListIcon,
@@ -176,7 +175,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
       <NavMain
   items={data.navMain}
-  className="bg-blue-500 hover:bg-blue-600 text-white"
 />
 
         <NavDocuments items={data.documents} />

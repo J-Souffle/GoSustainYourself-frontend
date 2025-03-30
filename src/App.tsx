@@ -15,7 +15,7 @@ function App() {
       >Find Recycling Centers Near You</h1>
   </div>
   <div className="w-full">
-    <RecycleCenterMap className="w-full" />
+    <RecycleCenterMap />
   </div>
 </div>
 
