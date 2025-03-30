@@ -1,6 +1,7 @@
 "use client"
 import * as React from "react"
 import Img1 from '../assets/natural-leaf-dark.png'
+import Img2 from '../assets/pfp.jpg'
 import {
   ArrowUpCircleIcon,
   BarChartIcon,
@@ -35,9 +36,9 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Kuthan Kukrer",
+    email: "kuthan@kukrer.com",
+    avatar: Img2,
   },
   navMain: [
     {
@@ -173,7 +174,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   </SidebarMenu>
 </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+      <NavMain
+  items={data.navMain}
+  className="bg-blue-500 hover:bg-blue-600 text-white"
+/>
+
         <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>

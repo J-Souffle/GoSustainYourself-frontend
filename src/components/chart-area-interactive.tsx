@@ -178,15 +178,36 @@ export function ChartAreaInteractive() {
             variant="outline"
             className="@[767px]/card:flex hidden"
           >
-            <ToggleGroupItem value="90d" className="h-8 px-2.5">
-              Last 3 months
-            </ToggleGroupItem>
-            <ToggleGroupItem value="30d" className="h-8 px-2.5">
-              Last 30 days
-            </ToggleGroupItem>
-            <ToggleGroupItem value="7d" className="h-8 px-2.5">
-              Last 7 days
-            </ToggleGroupItem>
+         <div className="flex gap-4">
+  <ToggleGroupItem
+    value="90d"
+    className="h-8 px-2.5"
+    style={{
+      backgroundColor: "rgba(0, 180, 0, 0.5)", // Green color with 50% opacity
+    }}
+  >
+    Last 3 months
+  </ToggleGroupItem>
+  <ToggleGroupItem
+    value="30d"
+    className="h-8 px-2.5"
+    style={{
+      backgroundColor: "rgba(0, 180, 0, 0.5)", // Green color with 50% opacity
+    }}
+  >
+    Last 30 days
+  </ToggleGroupItem>
+  <ToggleGroupItem
+    value="7d"
+    className="h-8 px-2.5"
+    style={{
+      backgroundColor: "rgba(0, 180, 0, 0.5)", // Green color with 50% opacity
+    }}
+  >
+    Last 7 days
+  </ToggleGroupItem>
+</div>
+
           </ToggleGroup>
           <Select value={timeRange} onValueChange={setTimeRange}>
             <SelectTrigger

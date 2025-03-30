@@ -51,16 +51,23 @@ export function NavDocuments({
                 <SidebarMenuAction
                   showOnHover
                   className="rounded-sm data-[state=open]:bg-accent"
+                  style={{
+                    backgroundColor: "rgba(0, 180, 0, 0.5)", // Green with 50% opacity
+                  }}
                 >
                   <MoreHorizontalIcon />
                   <span className="sr-only">More</span>
                 </SidebarMenuAction>
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                className="w-24 rounded-lg"
-                side={isMobile ? "bottom" : "right"}
-                align={isMobile ? "end" : "start"}
-              >
+  className="w-24 rounded-lg"
+  style={{
+    backgroundColor: "rgba(0, 180, 0, 0.5)", // Green with 50% opacity
+  }}
+  side={isMobile ? "bottom" : "right"}
+  align={isMobile ? "end" : "start"}
+>
+
                 <DropdownMenuItem>
                   <FolderIcon />
                   <span>Open</span>
@@ -74,7 +81,9 @@ export function NavDocuments({
           </SidebarMenuItem>
         ))}
         <SidebarMenuItem>
-          <SidebarMenuButton className="text-sidebar-foreground/70">
+          <SidebarMenuButton className="hover:text-purple-500 text-sidebar-foreground/70" style={{
+                  backgroundColor: "rgba(0, 180, 0, 0.5)", // Green color with 50% opacity
+                }}>
             <MoreHorizontalIcon className="text-sidebar-foreground/70" />
             <span>More</span>
           </SidebarMenuButton>
