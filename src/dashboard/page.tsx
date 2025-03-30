@@ -4,9 +4,6 @@ import { ChartAreaInteractive } from "../components/chart-area-interactive"
 import { SectionCards } from "../components/section-cards"
 import { SiteHeader } from "../components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
-import RecycleCenterMap from "../components/RecycleCenterMap";
-
-import data from "./data.json"
 
 export default function Page() {
   return (

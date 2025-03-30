@@ -1,6 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import RecycleCenterMap from "./components/RecycleCenterMap";
 import DashboardPage from './dashboard/page';
 
