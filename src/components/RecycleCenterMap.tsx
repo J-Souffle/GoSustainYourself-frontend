@@ -202,19 +202,19 @@ function RecycleCenterMap() {
       <div id="info-panel" className="info-panel mt-4 p-4 bg-gray-100 rounded"></div>
       <button
         onClick={goToUserLocation}
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        className="!bg-black mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
       >
         Go to My Location
       </button>
       <button
         onClick={findRecyclingPlaces}
-        className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+        className="!bg-black mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
       >
         Find Nearby Recycling Places
       </button>
       <button
         onClick={cycleThroughPlaces}
-        className="mt-4 px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600"
+        className="!bg-black mt-4 px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600"
       >
         Cycle Through Recycling Places
       </button>
