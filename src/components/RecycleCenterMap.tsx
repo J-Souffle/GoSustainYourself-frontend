@@ -55,8 +55,13 @@ function RecycleCenterMap() {
 
   return (
     <div>
-      <div id="map" style={{ height: "400px", width: "100%" }} />
-      <button onClick={findMyLocation}>Find My Location</button>
+      <div id="map" className="h-[500px] w-full lg:w-[800px]" />
+      <button
+        onClick={findMyLocation}
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        Find My Location
+      </button>
     </div>
   );
 }

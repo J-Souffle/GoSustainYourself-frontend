@@ -50,6 +50,12 @@
   --sidebar-ring: oklch(0.705 0.015 286.067);
 }
 
+#map {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+
 a {
   font-weight: 500;
   color: #646cff;
