@@ -96,49 +96,63 @@ function RecycleCenterMap() {
   
     const { longitude, latitude } = coordinates;
   
-    const queries = ["recycling center", "recycle", "environment", "trash"];
+    const queries = ["recycling center", "recycle", "waste", "environment", "trash"];
     Promise.all(
       queries.map((query) =>
         fetch(
-          `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?proximity=${longitude},${latitude}&access_token=${mapboxgl.accessToken}`
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${mapboxgl.accessToken}`
         )
           .then((response) => response.json())
           .then((data) => {
-            console.log("API Response:", data); // Log raw API responses
+            console.log(`API Response for ${query}:`, data);
             return data;
           })
-          .catch((error) => console.error(`Error fetching ${query}:`, error))
+          .catch((error) =>
+            console.error(`Error fetching ${query}:`, error)
+          )
       )
     ).then((results) => {
+      // Flatten all results into a single list
       const allPlaces = results.flatMap((data) => data.features || []);
   
-      setRecyclingPlaces(allPlaces);
-  
-      console.log("Filtered Recycling Places Found:", allPlaces);
-  
-      const allMarkers = document.getElementsByClassName("mapboxgl-marker");
-      while (allMarkers[0]) {
-        allMarkers[0].remove();
+      if (allPlaces.length === 0) {
+        alert("No places found. Try broadening your search or checking your internet connection.");
+        console.log("No places found.");
+        return;
       }
   
-      allPlaces.forEach((place: any) => {
-        const [lng, lat] = place.geometry.coordinates;
-        const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-          place.text || "Recycling Place"
+      // Sort places by distance from user location
+      const sortedPlaces = allPlaces.sort((placeA, placeB) => {
+        const [lngA, latA] = placeA.geometry.coordinates;
+        const [lngB, latB] = placeB.geometry.coordinates;
+  
+        const distanceA = Math.sqrt(
+          Math.pow(lngA - longitude, 2) + Math.pow(latA - latitude, 2)
+        );
+        const distanceB = Math.sqrt(
+          Math.pow(lngB - longitude, 2) + Math.pow(latB - latitude, 2)
         );
   
-        new mapboxgl.Marker({ color: "green" })
-          .setLngLat([lng, lat])
-          .setPopup(popup)
-          .addTo(map);
+        return distanceA - distanceB; // Closest places first
       });
+  
+      setRecyclingPlaces(sortedPlaces);
+  
+      console.log("Recycling Places Found and Sorted:", sortedPlaces);
+  
+      alert("Find Nearby Recycling Places: Success!");
     });
   };
   
+  
 
   const cycleThroughPlaces = () => {
-    if (!map || recyclingPlaces.length === 0) return;
-
+    if (!map || recyclingPlaces.length === 0) {
+      alert("No recycling places to cycle through. Please find nearby recycling places first.");
+      console.log("No places to cycle through.");
+      return;
+    }
+  
     // Get the current place based on the index
     const place = recyclingPlaces[currentPlaceIndex];
     if (!place || !place.geometry) {
@@ -146,17 +160,17 @@ function RecycleCenterMap() {
       return;
     }
     const [lng, lat] = place.geometry.coordinates;
-
+  
     // Log the current place
     console.log(`Cycling to Place: ${place.text || "Recycling Place"}`);
-
+  
     // Fly to the current place
     map.flyTo({
       center: [lng, lat],
       zoom: 14,
       essential: true,
     });
-
+  
     // Update the info panel with details of the current place
     const infoPanel = document.getElementById("info-panel");
     if (infoPanel) {
@@ -166,20 +180,21 @@ function RecycleCenterMap() {
         <p><strong>Coordinates:</strong> ${lng.toFixed(4)}, ${lat.toFixed(4)}</p>
       `;
     }
-
+  
     // Highlight the current place with a marker
     const popup = new mapboxgl.Popup({ offset: 25 }).setText(
       place.text || "Recycling Place"
     );
-
+  
     new mapboxgl.Marker({ color: "blue" })
       .setLngLat([lng, lat])
       .setPopup(popup)
       .addTo(map);
-
+  
     // Increment index to cycle to the next place
     setCurrentPlaceIndex((currentPlaceIndex + 1) % recyclingPlaces.length); // Loop back after reaching the last place
   };
+  
 
   return (
     <div className="flex flex-col items-center mx-6">
