@@ -1,6 +1,6 @@
 "use client"
-
 import * as React from "react"
+import Img1 from '../assets/natural-leaf-dark.png'
 import {
   ArrowUpCircleIcon,
   BarChartIcon,
@@ -153,21 +153,25 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="offcanvas" {...props}>
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5"
-            >
-              <a href="#">
-                <ArrowUpCircleIcon className="h-5 w-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
-              </a>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader>
+    <SidebarHeader>
+  <SidebarMenu>
+    <SidebarMenuItem>
+      <SidebarMenuButton
+        asChild
+        className="data-[slot=sidebar-menu-button]:!p-1.5"
+      >
+        <a href="#">
+          <img
+            src={Img1}
+            alt="Logo"
+            className="h-6 w-6 mr-2"
+          />
+          <span className="text-base font-semibold">GoSustainYourself</span>
+        </a>
+      </SidebarMenuButton>
+    </SidebarMenuItem>
+  </SidebarMenu>
+</SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
         <NavDocuments items={data.documents} />
