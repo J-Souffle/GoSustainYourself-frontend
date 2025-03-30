@@ -1,72 +1,39 @@
-import React, { useEffect, useState } from "react";
-import mapboxgl from "mapbox-gl";
+import { AppSidebar } from "../components/app-sideboard"
+import { ChartAreaInteractive } from "../components/chart-area-interactive"
+// import { DataTable } from "../components/data-table"
+import { SectionCards } from "../components/section-cards"
+import { SiteHeader } from "../components/site-header"
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import RecycleCenterMap from "../components/RecycleCenterMap";
 
-mapboxgl.accessToken = "pk.eyJ1IjoiamNhbmNpbyIsImEiOiJjbTh1eHozMHAwdWFuMnFwdnRldXM2ZXl0In0.TFhileQQGaipsC68FNbh3g";
+import data from "./data.json"
 
-// Type definitions for coordinates
-interface Coordinates {
-  longitude: number;
-  latitude: number;
-}
-
-function RecycleCenterMap() {
-  const [map, setMap] = useState<mapboxgl.Map | null>(null);
-  const [coordinates, setCoordinates] = useState<Coordinates>({
-    longitude: -77.037, // Default longitude
-    latitude: 38.897,  // Default latitude
-  });
-
-  useEffect(() => {
-    const initializeMap = new mapboxgl.Map({
-      container: "map",
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [coordinates.longitude, coordinates.latitude],
-      zoom: 12,
-    });
-
-    initializeMap.on("load", () => {
-      setMap(initializeMap);
-
-      // Fetch recycling center locations
-      fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/recycle center.json?proximity=${coordinates.longitude},${coordinates.latitude}&access_token=${mapboxgl.accessToken}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          data.features.forEach((center: any) => {
-            new mapboxgl.Marker()
-              .setLngLat(center.geometry.coordinates)
-              .addTo(initializeMap);
-          });
-        });
-    });
-
-    return () => initializeMap.remove();
-  }, [coordinates]);
-
-  const findMyLocation = () => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setCoordinates({
-        longitude: position.coords.longitude,
-        latitude: position.coords.latitude,
-      });
-    });
-  };
-
+export default function Page() {
   return (
-    <div className="flex flex-col items-center">
-      <div 
-        id="map" 
-        className="h-[500px] w-[800px] max-h-screen overflow-hidden" 
-      />
-      <button
-        onClick={findMyLocation}
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        Find My Location
-      </button>
-    </div>
+    <SidebarProvider>
+      <AppSidebar variant="inset" />
+      <SidebarInset>
+        <SiteHeader />
+        <div className="flex flex-1 flex-col">
+          <div className="@container/main flex flex-1 flex-col gap-2">
+            <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+              <SectionCards />
+              <div className="px-4 lg:px-6">
+                <ChartAreaInteractive />
+              </div>
+              {/* <div className="flex flex-wrap px-4 lg:px-6 gap-4">
+                <div className="flex-1">
+                  <h1>Find Recycling Centers Near You</h1>
+                </div>
+                <div className="flex-1">
+                  <RecycleCenterMap />
+                </div>
+              </div> */}
+            </div>
+          </div>
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }
 
-export default RecycleCenterMap;
